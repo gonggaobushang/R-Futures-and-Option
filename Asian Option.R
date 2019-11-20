@@ -1,5 +1,3 @@
-setwd("E:\\许捷\\R 工作\\亚式期权")
-
 # RQuantLib package
 library(RQuantLib)
 
@@ -11,7 +9,7 @@ AsianOption("arithmetic", "put", underlying=80, strike=85, div=-0.03,
 # 算术平均只返回价格
 # first,length,fixings 只适用于算数平均 
 # 开始时间 时间长度 除数权重
-
+#maturity 以年计
 
 # 画图
 # y=value,delta,gamma,vega,theta,rho,divRho
@@ -98,17 +96,7 @@ Asianplot <- function(averageType, type, underlying, strike,dividendYield, riskF
         y2 <- rbind(y2,asian_y)
       }
     }
-    
-  
-
-  
-  
-  
-  
   plot(x=asian_x,y=y2,type="l",xlab = x,ylab = y)
-  
-  
-  
   
 }
 
@@ -129,7 +117,6 @@ Asianplot("geometric", "put", underlying=80, strike=85, dividendYield=-0.03,
 
 Asianplot("geometric", "put", underlying=80, strike=85, dividendYield=-0.03,
           riskFreeRate=0.05, maturity=0.25, volatility=0.2,y="vega",x="volatility")
-
 
 Asianplot("arithmetic", "put", underlying=80, strike=85, dividendYield=-0.03,
           riskFreeRate=0.05, maturity=0.25, volatility=0.2,y="gamma",x="strike")
